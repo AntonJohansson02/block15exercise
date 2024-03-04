@@ -3,6 +3,7 @@ package edu.chalmers_gu_cse.oopd.exercises;
 /* This is now all we (can) use from the sub-package */
 import edu.chalmers_gu_cse.oopd.exercises.controller.PolygonClicker;
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.PolygonModel;
+import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Macro;
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.polygon.PolygonFactory;
 import edu.chalmers_gu_cse.oopd.exercises.view2d.PolygonViewer;
 
@@ -16,11 +17,11 @@ public class DrawPolygons {
         initUIForView(view);
         PolygonClicker controller = new PolygonClicker(polygons, view);
 
-        // TODO: Step 2g: Create a Macro that uses your ExampleTransform,
-        //  and pass this to the animation function.
-        polygons.animate();
-        // TODO: Step 2i: Instead of using ExampleTransform, write a lambda
-        //  expression here that does the same thing.
+        Macro macro = new Macro();
+        macro.addTransform(p -> p.rotate(Math.PI*0.1));
+        macro.addTransform(p -> p.scale(1.1, 1.1));
+
+        polygons.animate(macro);
 
     }//main
     private static void initUIForView(PolygonViewer view) {

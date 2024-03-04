@@ -1,5 +1,7 @@
 package edu.chalmers_gu_cse.oopd.exercises.polygonModel;
 
+import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Macro;
+import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Transform;
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.polygon.Polygon;
 
 import java.util.ArrayList;
@@ -36,8 +38,8 @@ public class PolygonModel implements ModelUpdateListener, Iterable<Polygon> {
     }
 
     // Delegate these methods to the animator
-    public void animate(){
-        animator.animate();
+    public void animate(Transform macro){
+        animator.animate(macro);
     }
 
     @Override

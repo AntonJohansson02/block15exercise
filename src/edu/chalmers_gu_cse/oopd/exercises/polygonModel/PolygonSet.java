@@ -11,22 +11,17 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /* package-private */ class PolygonSet implements Iterable<Polygon> {
-    // TODO 6: For more challenge:
+    // TODO 5: For more challenge:
     //  Implement a Composite Pattern for PolygonSet, making it
-    //  implement the Polygon interface. What issues do you run into?
+    //  implement the full Polygon interface. What issues do you run into?
     //  How can you work around them?
     private List<Polygon> polygons = new ArrayList<>();
     public void addPolygon(Polygon p){
         polygons.add(p);
     }
 
-    public void translate(int x, int y){
-        List<Polygon> translated = new ArrayList<>();
-        for (Polygon p : polygons) {
-            Polygon q = p.translate(x,y);
-            translated.add(q);
-        }
-        this.polygons = translated;
+    public void transform(int x, int y){
+        transform(p -> p.translate(x, y));
     }
 
     @Override
@@ -34,4 +29,12 @@ import java.util.stream.Stream;
         return polygons.iterator();
     }
 
+    public void transform(Transform transform) {
+        List<Polygon> translated = new ArrayList<>();
+        for (Polygon p : polygons) {
+            Polygon q = transform.transform(p);
+            translated.add(q);
+        }
+        this.polygons = translated;
+    }
 }
