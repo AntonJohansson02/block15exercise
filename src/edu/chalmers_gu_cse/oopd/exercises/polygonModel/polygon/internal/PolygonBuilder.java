@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PolygonBuilder {
 
-    // TODO 4: Builder Pattern: Replace this simple abstraction around the BasePolygon
+    // TODO 3: Builder Pattern: Replace this simple abstraction around the BasePolygon
     //  constructor with a Builder Pattern for creating new complex polygons.
     public static Polygon buildPolygon(List<Point> points) {
         return new BasePolygon(points);

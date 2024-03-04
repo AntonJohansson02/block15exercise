@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Niklas on 2016-02-19.
  */
 public class PolygonFactory {
-    // TODO 3: Abstract Factory: Define an interface for factories. Create a few different
+    // TODO 2: Abstract Factory: Define an interface for factories. Create a few different
     //  concrete instances of factories. Show that you can let the client (DrawPolygons)
     //  choose which factory to be used, by passing it to the initial PolygonModel, and
     //  to the PolygonClicker (should the model and the Clicker depend on the same Factory)?
