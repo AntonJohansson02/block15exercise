@@ -1,6 +1,6 @@
 package edu.chalmers_gu_cse.oopd.exercises.polygonModel;
 
-import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Macro;
+import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Clock;
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Transform;
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.polygon.Polygon;
 
@@ -24,10 +24,15 @@ public class PolygonModel implements ModelUpdateListener, Iterable<Polygon> {
 
     private final PolygonSet polygonSet;
     private final PolygonSetAnimator animator;
+    private final Clock clock;
+    
 
     public PolygonModel() {
         polygonSet = new PolygonSet();
         animator = new PolygonSetAnimator(polygonSet);
+        
+        clock = new Clock();
+        clock.addObserver(animator);
         animator.addListener(this);
     }//constructor
 
@@ -40,7 +45,10 @@ public class PolygonModel implements ModelUpdateListener, Iterable<Polygon> {
     // Delegate these methods to the animator
     public void animate(Transform macro){
         animator.animate(macro);
+        clock.run();
+
     }
+
 
     @Override
     public Iterator<Polygon> iterator() {

@@ -3,9 +3,13 @@ package edu.chalmers_gu_cse.oopd.exercises;
 /* This is now all we (can) use from the sub-package */
 import edu.chalmers_gu_cse.oopd.exercises.controller.PolygonClicker;
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.PolygonModel;
+import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Clock;
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.macro.Macro;
+import edu.chalmers_gu_cse.oopd.exercises.polygonModel.PolygonSetAnimator;
+
 import edu.chalmers_gu_cse.oopd.exercises.polygonModel.polygon.PolygonFactory;
 import edu.chalmers_gu_cse.oopd.exercises.view2d.PolygonViewer;
+
 
 import javax.swing.*;
 
@@ -16,10 +20,12 @@ public class DrawPolygons {
         PolygonViewer view = initViewForModel(polygons);
         initUIForView(view);
         PolygonClicker controller = new PolygonClicker(polygons, view);
+    
 
         Macro macro = new Macro();
         macro.addTransform(p -> p.rotate(Math.PI*0.1));
         macro.addTransform(p -> p.scale(1.1, 1.1));
+
 
         polygons.animate(macro);
 
@@ -45,6 +51,7 @@ public class DrawPolygons {
         PolygonViewer view = new PolygonViewer();
         view.addModel(polygonModel);
         polygonModel.addListener(view);
+        
         return view;
     }//initViewForModel
 
